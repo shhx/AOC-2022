@@ -3,8 +3,7 @@ use std::fs::File;
 
 fn main() {
     let mut calories: Vec<i32> = Vec::new();
-    println!("Hello, world!");
-    let file = File::open("day1_input.txt").expect("File not found");
+    let file = File::open("src/bin/day1_input.txt").expect("File not found");
     let lines = BufReader::new(file).lines();
     for line in lines {
         if let Ok(l) = line {

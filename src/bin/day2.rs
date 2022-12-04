@@ -53,7 +53,7 @@ fn main() {
     ]);
 
     // Part 1
-    let input = File::open("day2_input.txt").expect("File not found");
+    let file = File::open("src/bin/day2_input.txt").expect("File not found");
     let lines = BufReader::new(file).lines();
     let mut total_score = 0;
     for line in lines {
@@ -76,7 +76,7 @@ fn main() {
     println!("Total score: {}", total_score);
 
     // Part 2
-    let file = File::open("day2_input.txt").expect("File not found");
+    let file = File::open("src/bin/day2_input.txt").expect("File not found");
     let lines = BufReader::new(file).lines();
     let mut total_score = 0;
     for line in lines {
