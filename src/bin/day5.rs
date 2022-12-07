@@ -57,11 +57,7 @@ fn main() {
                             //  .map(|x| x.clone().next().unwrap())
                             .collect();
                             //  chars().nth(2).unwrap()
-    let mut stacks: Vec<Vec<char>> = Vec::new();
-    for _ in 0..n_stacks{
-        let v: Vec<char> = Vec::new();
-        stacks.push(v);
-    }
+    let mut stacks = vec![Vec::new(); n_stacks];
 
     for line in stack_line {
         println!("{:?}", line);
@@ -92,5 +88,5 @@ fn main() {
     }
 
     let top_crates = get_top_crates(&stacks).into_iter().collect::<String>();
-    println!("{}", top_crates);
+    println!("{}", top_crates); // JCMHLVGMG
 }

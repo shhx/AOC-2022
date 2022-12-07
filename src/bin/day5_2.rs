@@ -6,27 +6,10 @@ fn move_crate(stacks: &mut Vec<Vec<char>>, from: usize, to: usize, n_stacks: usi
     stacks[to].append(&mut crat);
 }
 
-fn print_stacks(stacks: &Vec<Vec<char>>) {
-    for stack in stacks {
-        for (i, c) in stack.iter().enumerate() {
-            for _ in 0..i {
-                print!(" ");
-            }
-            print!("{} ", c);
-        }
-        println!("");
-    }
-}
-
-
 fn get_top_crates(stacks: &Vec<Vec<char>>) -> Vec<char> {
     let mut top_crates: Vec<char> = Vec::new();
     for stack in stacks {
-        if stack.len() > 0 {
-            top_crates.push(stack[stack.len() - 1]);
-        } else {
-            top_crates.push(' ');
-        }
+        top_crates.push(stack[stack.len() - 1]);
     }
     top_crates
 }
@@ -74,5 +57,5 @@ fn main() {
     }
 
     let top_crates = get_top_crates(&stacks).into_iter().collect::<String>();
-    println!("{}", top_crates);
+    println!("{}", top_crates); // LVMRWSSPZ
 }
