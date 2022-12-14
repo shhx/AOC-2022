@@ -48,17 +48,11 @@ fn main() {
     let limit = 100000;
     let sum: usize = dirs.iter().filter(|(_, v)| **v <= limit).fold(0, |acc, (_, v)| acc + v);
     println!("{}", sum);
-    let needed_space: i32 = 40000000;
-    let remaining = dirs["/"] as i32 - needed_space;
+    let needed_space: usize = 40000000;
+    let remaining = dirs["/"] - needed_space;
     println!("free: {}", remaining);
-    let (diff, closest) = dirs.iter().fold((needed_space, 0 as usize), |(dif, val), (_, v)| {
-        let diff: i32 = remaining - *v as i32;
-        // println!("dir:{} diff:{} dif:{}", k, diff, dif);
-        if diff < 0 && diff.abs() < dif.abs() {
-            return (diff, *v);
-        }
-        return (dif, val);
-    });
-    println!("{} {}", diff, closest);
-
+    let min: usize = dirs.iter()
+                         .filter(|(_, v)| **v >= remaining)
+                         .map(|(_, v)| *v).min().expect("nop");
+    println!("min: {}", min);
 }

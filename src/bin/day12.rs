@@ -1,4 +1,5 @@
 use std::collections::HashSet;
+use std::collections::VecDeque;
 
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
@@ -33,12 +34,12 @@ fn main() {
     }
 
     let mut visited: HashSet<(isize, isize)> = HashSet::new();
-    let mut to_visit: Vec<Node> = Vec::new();
+    let mut to_visit: VecDeque<Node> = VecDeque::new();
     let n_start = Node { count: 0, pos: start };
     visited.insert(n_start.pos);
-    to_visit.push(n_start);
+    to_visit.push_back(n_start);
     while !to_visit.is_empty() {
-        let next = to_visit.remove(0);
+        let next = to_visit.pop_front().unwrap();
         let count = next.count + 1;
         for (i, j) in vec![(next.pos.0 + 1, next.pos.1), (next.pos.0, next.pos.1 + 1), 
                            (next.pos.0 - 1, next.pos.1), (next.pos.0, next.pos.1 - 1)] {
@@ -53,7 +54,7 @@ fn main() {
             if diff <= 1 {
                 let node = Node { count, pos: (i, j) };
                 // println!("In ({:?}) val: {} -> checking ({},{})", next, map[next.pos.0 as usize][next.pos.1 as usize], i, j);
-                to_visit.push(node);
+                to_visit.push_back(node);
                 visited.insert(node.pos);
             }
             if (i, j) == destination && diff <= 1 {
