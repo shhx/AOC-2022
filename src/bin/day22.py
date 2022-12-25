@@ -9,31 +9,18 @@ class Line:
         return f"Line(offset={self.offset}, length={self.length})"
 
 def rotate(dir, right):
+    x, y = dir
     if not right:
-        if dir == (1, 0):
-            return (0, -1)
-        elif dir == (0, -1):
-            return (-1, 0)
-        elif dir == (-1, 0):
-            return (0, 1)
-        elif dir == (0, 1):
-            return (1, 0)
+        return y, -x
     else:
-        if dir == (1, 0):
-            return (0, 1)
-        elif dir == (0, -1):
-            return (1, 0)
-        elif dir == (-1, 0):
-            return (0, -1)
-        elif dir == (0, 1):
-            return (-1, 0)
+        return -y, x
 
 facings = {
     (1, 0): (0, ">"),
     (0, 1): (1, "v"),
     (-1, 0): (2, "<"),
     (0, -1): (3, "^"),
- }
+}
 
 board, orders = open("src/bin/day22_input.txt").read().split("\n\n")
 board = board.split("\n")
